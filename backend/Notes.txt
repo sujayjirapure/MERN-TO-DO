@@ -1,0 +1,85 @@
+
+Backend Notes
+
+
+_______________________Step 1______________________________________
+
+enter in that folder and enter cmd
+
+> npm init
+
+package name - express_nova (any name )
+version - nan
+...
+...
+yes
+
+// package file - file will be created 
+// now need to install express , nodemon
+
+> npm install express --save
+> npm i nodemon
+
+_______________________Step 2 _______________________________________________________
+
+// Make app.js file inside backend
+
+write in srcipts in side pacakge.json
+(also create a file app.js)
+"start": "nodemon app.js",
+
+npm start
+//start the serrver (nodemon)
+
+_______________________Step 3 _______________________________________________________
+ 
+ // Run the server on a Port
+
+const express = require('express');
+const app = express();            
+
+app.get('/',(req ,resp) => {
+    resp.send('my server is started'); 
+    //console.log('sever started');   
+})
+
+
+console.log("sujay server is running...");
+app.listen(5000);
+
+
+_______________________Step 4 _______________________________________________________
+
+
+syntax get ->
+
+app.get('/', (req ,resp) => {
+    const productlist = [
+        {
+            name: "product 1",
+            id: 1
+        },
+        {
+            name: "product 2",
+            id: 2
+        }
+    ]
+    resp.send(productlist);
+    console.log('product send...');
+})
+
+
+
+syntax post -> 
+
+app.post('/', (req, resp) => {
+    try{
+        console.log('post api data -', req.body);
+        resp.send('api sucessfull...');
+    }
+    catch(err){
+        resp.send("faild...");
+    }
+})
+
+
