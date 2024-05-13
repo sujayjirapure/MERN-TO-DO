@@ -83,6 +83,61 @@ app.post('/', (req, resp) => {
 })
 
 
+________________________step 5_______________________________
+
+add cors 
+
+npm i cors
+
+in app.js
+
+const cors = require('cors');
 
 
+________________________step 6 _______________________________________________________
 
+bodyParsel use to get console on backend server console (can read)
+
+
+________________________step 7_______________________________
+data base 
+
+create shecma
+
+//scehma 
+const userSchema = new mongoose.Schema({
+    Work: String,
+    deadline: String
+})
+
+const todomern = mongoose.model('todomern', userSchema)
+//    anything                 table name       same as upper schema (to coonnect)
+
+
+app.post('/', (req, resp) => {
+    try{
+
+        let user = new todomern();
+                         same as upper one
+        todomern.work = req.body.work;
+        todomern.deadline = req.body.deadline;
+
+        console.log('post api data -', req.body);
+        
+    }
+    catch(err){
+        resp.send("faild...");
+    }
+})
+
+
+________________________step 8_______________________________
+
+show all data on from end 
+
+
+//show all data from data base to front end
+app.get('/data',async (req ,resp) => {
+   const docs = await todomern.find({});
+   resp.json(docs);   
+})
