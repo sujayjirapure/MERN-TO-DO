@@ -20,7 +20,7 @@ function App() {
 
   const handlesubmit = async (e)=>{     //post request
     //e.preventDefault();
-    const response = await fetch('http://localhost:4000/',{
+    const response = await fetch('https://mern-to-do-xi.vercel.app/',{
     method:'POST',
     body:JSON.stringify(from),
     headers:{
@@ -33,7 +33,7 @@ function App() {
 
   //get all data from DB
   const getdata = async () => {
-    const response = await fetch('http://localhost:4000/data',{
+    const response = await fetch('https://mern-to-do-xi.vercel.app/data',{
     method:'GET',
     })
     const dataget = await response.json();
@@ -48,7 +48,7 @@ function App() {
   //delete todo task
   const tododelete = async (id) => {
 
-    await fetch('http://localhost:4000/deletetodo/'+id,{
+    await fetch('https://mern-to-do-xi.vercel.app/deletetodo/'+id,{
     method:'DELETE',
     })
     window.location.reload();
