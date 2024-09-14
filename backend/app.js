@@ -5,8 +5,9 @@ const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json());  //imp for post
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const PORT = process.env.PORT || 4000
+
 
 //default 
 app.get('/',(req ,resp) => {
@@ -55,15 +56,11 @@ app.post('/',async (req, resp) => {
 })
 
 
-const dburl = 'mongodb+srv://sujay03:sujay03@cluster0.23hwmxr.mongodb.net/todomerns?retryWrites=true&w=majority&appName=Cluster0';
 
-mongoose.connect(dburl).then(() => {
+
+mongoose.connect(process.env.DBURL).then(() => {
     console.log('mongooDB is connected...');
 }).catch((err) => console.log('MongoDB not connected...'));
  
 
-
-
-
-
-app.listen(PORT ,()=> console.log("sujay server is running at 4000..."));
+app.listen(process.env.PORT ,()=> console.log("sujay server is running at 4000..."));
